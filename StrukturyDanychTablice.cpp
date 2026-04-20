@@ -14,7 +14,7 @@ using namespace std::chrono;
 const int TESTS = 50;
 const int OPS = 100;
 
-// wypełnianie
+
 void fill(Dynamiczna& td, Wiazana& l1, Dwokierunkowa& l2, int n) {
     for (int i = 0; i < n; i++) {
         int val = rand() % 10000;
@@ -49,7 +49,7 @@ int main() {
 
             int val = rand() % 10000;
 
-            // ================= add_front =================
+            
             auto start = high_resolution_clock::now();
             for (int i = 0; i < OPS; i++) td.add_front(val);
             auto end = high_resolution_clock::now();
@@ -65,7 +65,7 @@ int main() {
             end = high_resolution_clock::now();
             l2_af += duration_cast<nanoseconds>(end - start).count() / OPS;
 
-            // ================= add_back =================
+            
             start = high_resolution_clock::now();
             for (int i = 0; i < OPS; i++) td.add_back(val);
             end = high_resolution_clock::now();
@@ -81,7 +81,7 @@ int main() {
             end = high_resolution_clock::now();
             l2_ab += duration_cast<nanoseconds>(end - start).count() / OPS;
 
-            // ================= find =================
+            
             start = high_resolution_clock::now();
             for (int i = 0; i < OPS; i++) td.find(val);
             end = high_resolution_clock::now();
@@ -98,18 +98,18 @@ int main() {
             l2_fi += duration_cast<nanoseconds>(end - start).count() / OPS;
         }
 
-        // średnia
+        
         td_af /= TESTS; l1_af /= TESTS; l2_af /= TESTS;
         td_ab /= TESTS; l1_ab /= TESTS; l2_ab /= TESTS;
         td_fi /= TESTS; l1_fi /= TESTS; l2_fi /= TESTS;
 
-        // zapis CSV
+        
         file << N << ";"
             << td_af << ";" << l1_af << ";" << l2_af << ";"
             << td_ab << ";" << l1_ab << ";" << l2_ab << ";"
             << td_fi << ";" << l1_fi << ";" << l2_fi << "\n";
 
-        // console
+        
         cout << "\nN = " << N << "\n";
         cout << "add_front -> TD: " << td_af << " | L1: " << l1_af << " | L2: " << l2_af << "\n";
         cout << "add_back  -> TD: " << td_ab << " | L1: " << l1_ab << " | L2: " << l2_ab << "\n";
