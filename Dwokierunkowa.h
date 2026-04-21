@@ -24,6 +24,18 @@ public:
         size = 0;
     }
 
+    Dwokierunkowa(const Dwokierunkowa& other) {
+        head = nullptr;
+        tail = nullptr;
+        size = 0;
+
+        Node* temp = other.head;
+        while (temp != nullptr) {
+            add_back(temp->data);
+            temp = temp->next;
+        }
+    }
+
     ~Dwokierunkowa() {
         while (head != nullptr) {
             delete_front();
@@ -65,7 +77,7 @@ public:
     }
 
     void add_index(int x, int index) {
-        if (index < 0 || index > size) return;
+        if (index < 0 or index > size) return;
 
         if (index == 0) {
             add_front(x);
