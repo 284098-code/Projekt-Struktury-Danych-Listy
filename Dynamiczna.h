@@ -13,6 +13,17 @@ public:
         capacity = 10;
         arr = new int[capacity];
     }
+
+    Dynamiczna(const Dynamiczna& other) {
+        size = other.size;
+        capacity = other.capacity;
+        arr = new int[capacity];
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = other.arr[i];
+        }
+    }
+
     ~Dynamiczna() {
         delete[] arr;
     }
