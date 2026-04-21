@@ -21,6 +21,17 @@ public:
         size = 0;
     }
 
+    Wiazana(const Wiazana& other) {
+        head = nullptr;
+        size = 0;
+
+        Node* temp = other.head;
+        while (temp != nullptr) {
+            add_back(temp->data);
+            temp = temp->next;
+        }
+    }
+
     ~Wiazana() {
         while (head != nullptr) {
             delete_front();
