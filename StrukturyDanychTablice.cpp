@@ -14,10 +14,6 @@ using namespace std::chrono;
 const int TESTS = 40;
 const int OPS = 80;
 
-// =========================================
-// KOLEJKA PRIORYTETOWA - DYNAMICZNA
-// =========================================
-
 class PriorityDynamiczna {
 private:
     Dynamiczna dane;
@@ -65,10 +61,6 @@ public:
         }
     }
 };
-
-// =========================================
-// KOLEJKA PRIORYTETOWA - WIAZANA
-// =========================================
 
 class PriorityWiazana {
 private:
@@ -118,10 +110,6 @@ public:
     }
 };
 
-// =========================================
-// KOLEJKA PRIORYTETOWA - DWUKIERUNKOWA
-// =========================================
-
 class PriorityDwokierunkowa {
 private:
     Dwokierunkowa dane;
@@ -170,10 +158,6 @@ public:
     }
 };
 
-// =========================================
-// WYPEŁNIANIE STRUKTUR
-// =========================================
-
 void fill(
     PriorityDynamiczna& td,
     PriorityWiazana& l1,
@@ -190,10 +174,6 @@ void fill(
         l2.push(val);
     }
 }
-
-// =========================================
-// MAIN
-// =========================================
 
 int main() {
 
@@ -228,10 +208,6 @@ int main() {
         long long l1_mod = 0;
         long long l2_mod = 0;
 
-        // =====================================
-        // BAZOWE STRUKTURY
-        // =====================================
-
         PriorityDynamiczna base_td;
         PriorityWiazana base_l1;
         PriorityDwokierunkowa base_l2;
@@ -240,17 +216,9 @@ int main() {
 
         fill(base_td, base_l1, base_l2, N);
 
-        // =====================================
-        // TESTY
-        // =====================================
-
         for (int t = 0; t < TESTS; t++) {
 
             int val = rand() % 10000;
-
-            // =================================
-            // PUSH
-            // =================================
 
             cout << "push test..." << endl;
 
@@ -293,10 +261,6 @@ int main() {
                 l2_push += duration_cast<nanoseconds>(end - start).count();
             }
 
-            // =================================
-            // POP
-            // =================================
-
             cout << "pop test..." << endl;
 
             for (int i = 0; i < OPS; i++) {
@@ -337,10 +301,6 @@ int main() {
 
                 l2_pop += duration_cast<nanoseconds>(end - start).count();
             }
-
-            // =================================
-            // MODIFY PRIORITY
-            // =================================
 
             cout << "modify test..." << endl;
 
@@ -384,10 +344,6 @@ int main() {
             }
         }
 
-        // =====================================
-        // ŚREDNIE CZASY
-        // =====================================
-
         td_push /= (TESTS * OPS);
         l1_push /= (TESTS * OPS);
         l2_push /= (TESTS * OPS);
@@ -400,19 +356,11 @@ int main() {
         l1_mod /= (TESTS * OPS);
         l2_mod /= (TESTS * OPS);
 
-        // =====================================
-        // ZAPIS CSV
-        // =====================================
-
         file << N << ";"
             << td_push << ";" << l1_push << ";" << l2_push << ";"
             << td_pop << ";" << l1_pop << ";" << l2_pop << ";"
             << td_mod << ";" << l1_mod << ";" << l2_mod
             << endl;
-
-        // =====================================
-        // WYNIKI
-        // =====================================
 
         cout << "\nWYNIKI:\n" << endl;
 
