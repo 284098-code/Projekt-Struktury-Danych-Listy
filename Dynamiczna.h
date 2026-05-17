@@ -80,8 +80,8 @@ public:
             enlarge();
         }
 
-        for (int i = size; i > index; i--) {
-            arr[i] = arr[i - 1];
+        for (int j = size; j > index; j--) {
+            arr[j] = arr[j - 1];
         }
         arr[index] = i;
         size++;

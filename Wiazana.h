@@ -42,6 +42,17 @@ public:
         return size;
     }
 
+    int get(int index) { 
+        if (index < 0 or index >= size) {
+            return -1;
+        }
+        Node* temp = head; 
+        for (int i = 0; i < index; i++) {
+            temp = temp->next; 
+        } 
+        return temp->data; 
+    }
+
 
     void add_back(int i) {
         Node* newNode = new Node(i);
